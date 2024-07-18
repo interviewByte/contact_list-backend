@@ -19,15 +19,37 @@ app.use(function(req,res,next){
     next();
 });
 
-app.post('/contact-list',function(req,res){
-    const formData = req.body;
-    if(formData){
-        res.send({status:"200"})
+// app.post('/contact-list',function(req,res){
+//     const formData = req.body;
+//     if(formData){
+//         res.send({status:"200"})
+//     }
+//     else{
+//         res.send({status:"404"})
+//     }
+//     console.log(req.body)
+// })
+// app.delete('/contact-list/:id', function (req, res) {
+//     console.log(req.params);
+//     const paramVal = req.params.id;
+//     console.log('paramVal', paramVal);
+//     if (paramVal) {
+//       return res.status(200).send({ status: '200', message: 'Deleted successfully' });
+//     } else {
+//       return res.status(404).send({ status: '404', message: 'Not found' });
+//     }
+//   });
+
+  
+app.delete('/contact-list/', function(req,res){
+    const id = req.query.id;
+    console.log(req.query);
+    console.log(id)
+    if(id){
+        res.send({status:"200",message:"Success"})
+    }else{
+        res.send({status:"404",message:"not success"})
     }
-    else{
-        res.send({status:"404"})
-    }
-    console.log(req.body)
 })
 app.get('/', function(req,res){
     res.send('<h1>Hello World</h1>')
